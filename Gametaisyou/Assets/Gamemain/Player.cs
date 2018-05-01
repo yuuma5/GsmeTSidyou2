@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;//シーンマネジメントを有効にする
 
 public class Player : MonoBehaviour {
 
@@ -21,7 +22,16 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
+	//　aキーを押している間ずっとコンソールに表示
+        if(Input.GetKey("a")) {
+            Debug.Log("A-String");
+            SceneManager.LoadScene("GameClear");//シーン切替
+        }
+        if (Input.GetKey("z"))
+        {
+            Debug.Log("z-String");
+            SceneManager.LoadScene("GameOver");//シーン切替
+        }
         //左矢印が押されたとき
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
