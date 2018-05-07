@@ -3,47 +3,70 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;//シーンマネジメントを有効にする
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
+    GameObject target;
+    public float speed, ratio;
 
-	// Use this for initialization
     void Start()
     {
-    }
-    public void LButtonDown()
-    {
-        transform.Translate(-3, 0, 0);
-    }
-    public void RButtonDown()
-    {
-        transform.Translate(3, 0, 0);
+        OnStart(GameObject.Find("cloud prep").gameObject);
     }
 
-
-    // Update is called once per frame
-    void Update()
+    public void OnStart(GameObject target)
     {
-	//　aキーを押している間ずっとコンソールに表示
-        if(Input.GetKey("a")) {
-            Debug.Log("A-String");
-            SceneManager.LoadScene("GameClear");//シーン切替
-        }
-        if (Input.GetKey("z"))
+        this.target = target;
+        StartCoroutine(Throw());
+    }
+
+    IEnumerator Throw()
+    {
+        float t = 0f;
+        float distance = Vector3.Distance(transform.position, target.transform.position);
+
+        Vector3 offset = transform.position;
+        Vector3 P2 = target.transform.position - offset;
+
+        //高度設定
+        float angle = 45f;
+        float base_range = 5f;
+        float max_angle = 50f;
+
+        angle = angle * distance / base_range;
+        if (angle > max_angle)
         {
-            Debug.Log("z-String");
-            SceneManager.LoadScene("GameOver");//シーン切替
-        }
-        //左矢印が押されたとき
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            transform.Translate(-3, 0, 0);//左に「３」動かす
-        }
-        //右矢印が押されたとき
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            transform.Translate(3, 0, 0);//右に「３」動かす
+            angle = max_angle;
         }
 
+
+        float P1x = P2.x * ratio;
+        //angle * Mathf.Deg2Rad 角度からラジアンへ変換
+        float P1y = Mathf.Sin(angle * Mathf.Deg2Rad) * Mathf.Abs(P1x) / Mathf.Cos(angle * Mathf.Deg2Rad);
+        Vector3 P1 = new Vector3(P1x, P1y, 0);
+
+        Vector3 look = P1;
+        transform.rotation = Quaternion.FromToRotation(Vector3.up, look);
+        float slerp_start_point = ratio * 0.5f;
+
+        while (t <= 1 && target)
+        {
+            float Vx = 2 * (1f - t) * t * P1.x + Mathf.Pow(t, 2) * P2.x + offset.x;
+            float Vy = 2 * (1f - t) * t * P1.y + Mathf.Pow(t, 2) * P2.y + offset.y;
+            transform.position = new Vector3(Vx, Vy, 0);
+
+            if (t > slerp_start_point)
+            {
+                look = target.transform.position - transform.position;
+                Quaternion to = Quaternion.FromToRotation(Vector3.up, look);
+                transform.rotation = Quaternion.Slerp(transform.rotation, to, speed * 0.5f * Time.deltaTime);
+            }
+
+            t += speed / distance * Time.deltaTime;
+            yield return null;
+        }
+
+        //Destroy (this.gameObject);
     }
+
 
 }
-
