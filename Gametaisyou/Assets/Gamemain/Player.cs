@@ -11,7 +11,9 @@ public class Player : MonoBehaviour
     bool owari;
 
     GameObject target;
+    GameObject target2;
     public float speed, ratio;
+    public float speed2, ratio2;
 
     void Start()
     {
@@ -26,6 +28,12 @@ public class Player : MonoBehaviour
             Debug.Log("A-String");
             OnStart(GameObject.Find("koko").gameObject);
         }
+        if (Input.GetKeyDown("b") && this.rigid2D.velocity.y == 0)
+        {
+            Debug.Log("koiyo");
+            Debug.Log("A-String");
+            OnStart2(GameObject.Find("koko2").gameObject);
+        }
         
     }
 
@@ -34,6 +42,12 @@ public class Player : MonoBehaviour
         this.target = target;
         StartCoroutine(Throw());
         //cnt++;
+    }
+    void OnStart2(GameObject target2)
+    {
+        this.target = target2;
+        StartCoroutine(Throw());
+
     }
 
     IEnumerator Throw()
