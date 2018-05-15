@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public float speed, ratio;
     public float speed2, ratio2;
 
+
     void Start()
     {
         this.rigid2D = GetComponent<Rigidbody2D>();
