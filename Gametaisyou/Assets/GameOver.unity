@@ -229,6 +229,8 @@ GameObject:
   - component: {fileID: 1540467508}
   - component: {fileID: 1540467507}
   - component: {fileID: 1540467506}
+  - component: {fileID: 1540467509}
+  - component: {fileID: 1540467510}
   m_Layer: 0
   m_Name: Yazirusi
   m_TagString: Untagged
@@ -304,6 +306,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1540467509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1540467505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f11a74d3b7f09fd4f8ec8676a0680891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CheckTime: 0
+  UPTime: 0
+  CheckFlg: 0
+--- !u!114 &1540467510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1540467505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4b7a0bcc8d5344cab755fc587d09c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OrgelTime: 0
+  Orgel6Time: 0
+  OrgelOutTime: 0
+  OrgelFlg: 0
 --- !u!1 &1545598206
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +409,7 @@ GameObject:
   - component: {fileID: 1679874471}
   - component: {fileID: 1679874473}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,10 +482,6 @@ MonoBehaviour:
   RedFace: {fileID: 21300000, guid: 01831bebfdeebb64c80e8752a21cc0c6, type: 3}
   BlackFace: {fileID: 21300000, guid: 9d4f19d007acf5245bf5b5a75bda9cec, type: 3}
   FaceGauge: 0
-  OrgelTime: 0
-  Orgel6Time: 0
-  OrgelOutTime: 0
-  OrgelFlg: 0
 --- !u!1 &1808395268
 GameObject:
   m_ObjectHideFlags: 0
