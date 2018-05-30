@@ -14,11 +14,14 @@ public class Player : MonoBehaviour
     public float speed, ratio;
     public float speed2, ratio2;
     public GameObject kurumaPlefab;
+    static public bool damage;
     void Start()
     {
+        damage = false;
         this.rigid2D = GetComponent<Rigidbody2D>();
        // OnStart(GameObject.Find("koko").gameObject);
     }
+
     void Update()
     {
         if (kuruma.kietaflg == true)
@@ -36,6 +39,7 @@ public class Player : MonoBehaviour
             Debug.Log("koiyo");
             Debug.Log("A-String");
             OnStart(GameObject.Find("koko").gameObject);
+            damage = true;
         }
         if (Input.GetKeyDown("b") && this.rigid2D.velocity.y == 0)
         {
