@@ -11,7 +11,7 @@ public class Blinker : MonoBehaviour
     public int ButtonChengeFlg = 0;
     private GameObject ButtonChenge;
     // Alpha増減値(点滅スピード調整)
-    private float _Step = 0.01f;
+    private float _Step = 0.02f;
 
     void Start()
     {
