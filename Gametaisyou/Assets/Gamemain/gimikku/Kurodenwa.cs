@@ -7,27 +7,36 @@ public class Kurodenwa : MonoBehaviour {
     public float UPTime;    //時間加算変数
     public int CheckFlg;    //黒電話の処理がもうすでに起動してるかを確認するフラグ
     bool dennwa;
+    Animator hana;
 	// Use this for initialization
 	void Start () {
         CheckTime = 1;
         UPTime = 0;
         CheckFlg = 0;
         dennwa = false;
+        hana = gameObject.GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if( CheckFlg == 0)         //ゲットキーダウンのところをother.tagに変えて、if文の外側をOntrggerStay 2Dで当たり判定を取ってほしい。
+        Debug.Log(dennwa);
+        if (dennwa == false)
         {
-            CheckFlg = 1;
+            hana.SetTrigger("HanaBack");
         }
-        if (dennwa == true && CheckFlg == 1)
+        //if( CheckFlg == 0)         //ゲットキーダウンのところをother.tagに変えて、if文の外側をOntrggerStay 2Dで当たり判定を取ってほしい。
+        //{
+            
+        //    CheckFlg = 1;
+        //}
+        if (dennwa == true)
         {
+            hana.SetTrigger("HanaT");
             UPTime += Time.deltaTime;
             if (UPTime >= CheckTime)    //１秒毎に処理をする
             {
-
-                GameObject.Find("Face").GetComponent<Face>().FaceGauge += 10;   //顔ゲージに数値を加算
+                   
+                //GameObject.Find("Face").GetComponent<Face>().FaceGauge += 10;   //顔ゲージに数値を加算
                 UPTime = 0.0f;
             }
         }
@@ -39,6 +48,7 @@ public class Kurodenwa : MonoBehaviour {
         {
             Debug.Log("電話だよーでてー！！");
             dennwa = true;
+            //hana.SetTrigger("HanaT");
 
         }
     }
@@ -48,7 +58,7 @@ public class Kurodenwa : MonoBehaviour {
         {
             Debug.Log("電話終わってるじゃねぇか！！");
             dennwa = false;
-
+            //hana.SetTrigger("HanaBack");
         }
     }
 }
