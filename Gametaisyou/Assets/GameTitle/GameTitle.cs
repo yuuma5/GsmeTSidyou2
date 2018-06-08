@@ -17,5 +17,6 @@ public class GameTitle : MonoBehaviour {
             Debug.Log("A-String");
             SceneManager.LoadScene("GameMain");//シーン切替
         }
+
 	}
 }

@@ -18,6 +18,7 @@ public class GameClearflg : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
+            Debug.Log("クーリア");
             Clearflg = true;
         }
     }
