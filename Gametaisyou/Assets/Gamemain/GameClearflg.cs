@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;//シーンマネジメントを有効にする
 
-public class GameTitle : MonoBehaviour {
-
+public class GameClearflg : MonoBehaviour {
+    static public bool Clearflg = false;
 	// Use this for initialization
 	void Start () {
-		
+        Clearflg = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey("a"))
-        {
-            Debug.Log("A-String");
-            SceneManager.LoadScene("GameMain");//シーン切替
-        }
-
+		
 	}
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            Debug.Log("クーリア");
+            Clearflg = true;
+        }
+    }
 }

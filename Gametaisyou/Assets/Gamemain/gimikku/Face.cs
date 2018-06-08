@@ -26,8 +26,9 @@ public class Face : MonoBehaviour {
         {
             FaceGauge = 100;
         }
-        if (Input.GetKeyDown(KeyCode.A))    //Aキーを押したら顔ゲージの数値が上昇する（Aじゃなくてもいいヨ！
+        if (Player.damage == true)    //Aキーを押したら顔ゲージの数値が上昇する（Aじゃなくてもいいヨ！
         {
+            Player.damage = false;
             FaceGauge += FaceGaugeNumber;
         }
         if (Input.GetKeyDown(KeyCode.Space))    //スペースキーを押したら顔ゲージが減る

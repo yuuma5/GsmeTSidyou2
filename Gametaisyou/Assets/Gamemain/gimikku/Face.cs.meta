@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: d6becb40f44eae146807cda1cba8541a
+timeCreated: 1526355366
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - BlueFace: {fileID: 21300000, guid: c4e3fbcd04477f94fa3ccd1c9fa0e6d1, type: 3}
+  - YellowFace: {fileID: 21300000, guid: c47b1c0fe4ebe144bb09c96045a294f5, type: 3}
+  - RedFace: {fileID: 21300000, guid: 01831bebfdeebb64c80e8752a21cc0c6, type: 3}
+  - BlackFace: {fileID: 21300000, guid: 9d4f19d007acf5245bf5b5a75bda9cec, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
