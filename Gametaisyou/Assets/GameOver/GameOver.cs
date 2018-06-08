@@ -26,7 +26,7 @@ public class GameOver : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space) && Flgs == 1)
         {
             Debug.Log("retryするで！");
-            SceneManager.LoadScene("GameTitle");//ここのシーンの名前をゲームメインに変えてください
+            SceneManager.LoadScene("Gamemain");//ここのシーンの名前をゲームメインに変えてください
         }
     }
 }
