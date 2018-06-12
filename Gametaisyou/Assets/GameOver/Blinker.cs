@@ -10,24 +10,31 @@ public class Blinker : MonoBehaviour
 {
     public int ButtonChengeFlg = 0;
     private GameObject ButtonChenge;
+    private AudioSource UpDownSound;    //上下移動時の音だじぇ
     // Alpha増減値(点滅スピード調整)
     private float _Step = 0.02f;
 
     void Start()
     {
-       if( ButtonChengeFlg == 0)  this.ButtonChenge = GameObject.Find("TitleButton");
+        UpDownSound = GetComponent<AudioSource>();
+       
+       if ( ButtonChengeFlg == 0)  this.ButtonChenge = GameObject.Find("TitleButton");
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            UpDownSound.PlayOneShot(UpDownSound.clip);
+            Debug.Log("移動音ならすじぇ");
             this.ButtonChenge.GetComponent<Image>().color = new Color(255, 255, 255, 1);
             this.ButtonChenge = GameObject.Find("TitleButton");
             ButtonChengeFlg = 0;
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            UpDownSound.PlayOneShot(UpDownSound.clip);
+            Debug.Log("移動音ならすじぇ");
             this.ButtonChenge.GetComponent<Image>().color = new Color(255, 255, 255, 1);
             this.ButtonChenge = GameObject.Find("RetryButton");
             ButtonChengeFlg = 1;
