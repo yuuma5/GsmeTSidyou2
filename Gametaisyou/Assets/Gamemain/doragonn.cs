@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;//シーンマネジメントを有効にする
 public class doragonn : MonoBehaviour
 {
     Rigidbody2D rb;
-    public bool korosudeflg;
+    static public bool overflg;
+    static public bool korosudeflg;
     public float doragonnTime;         //オルゴールの経過時間を加算する変数
     public int doragonnLimitTime;      //６秒経ったか確認するための変数
     public int doragonnOutTime;        //オルゴールのタイムがタイムリミットになったか確認する処理
@@ -20,12 +21,17 @@ public class doragonn : MonoBehaviour
         doragonnFlg = 1;
         doragonnLimitTime = 180;
         korosudeflg = false;
+        overflg = false;
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (overflg == true)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
         if (doragonnFlg == 1)
         {
             doragonnTime += Time.deltaTime;        //時間加算
@@ -42,6 +48,14 @@ public class doragonn : MonoBehaviour
                 var v = new Vector2(0.6f, rb.velocity.x);
                 transform.Translate(v);
             }
+        }
+    }
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            Debug.Log("殺した");
+            overflg = true;
         }
     }
 }

@@ -14,7 +14,17 @@ public class Player : MonoBehaviour
     public float speed, ratio;
     public float speed2, ratio2;
     public GameObject kurumaPlefab;
+    public GameObject hi2;
+    public GameObject hi3;
     static public bool damage;
+
+    // 長押しフレーム数
+    private int presskeyFrames = 0;
+    // 長押し判定の閾値（フレーム数）
+    private int thresholdLong = 60;
+    // 軽く押した判定の閾値（フレーム数）
+    private int thresholdShort = 30;
+
     void Start()
     {
         damage = false;
@@ -29,11 +39,14 @@ public class Player : MonoBehaviour
             Debug.Log("わだじどいっじょに（ブロックを）づぐっでぇ！！");
             kuruma.kietaflg = false;
             Instantiate(kurumaPlefab);
+            Instantiate(hi2);
+            Instantiate(hi3);
         }
         if (GameClearflg.Clearflg == true)
         {
             SceneManager.LoadScene("GameClear");//シーン切替
         }
+
         if (Input.GetKeyDown("a") && this.rigid2D.velocity.y == 0)
         {
             Debug.Log("koiyo");
@@ -46,6 +59,7 @@ public class Player : MonoBehaviour
             Debug.Log("koiyo");
             Debug.Log("A-String");
             OnStart2(GameObject.Find("koko2").gameObject);
+            damage = true;
         }
         
     }

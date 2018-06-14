@@ -27,7 +27,7 @@ public class Kurodenwa : MonoBehaviour {
         //if( CheckFlg == 0)         //ゲットキーダウンのところをother.tagに変えて、if文の外側をOntrggerStay 2Dで当たり判定を取ってほしい。
         //{
             
-        //    CheckFlg = 1;
+        //    CheckFlg = 1; 
         //}
         if (dennwa == true)
         {
@@ -35,8 +35,7 @@ public class Kurodenwa : MonoBehaviour {
             UPTime += Time.deltaTime;
             if (UPTime >= CheckTime)    //１秒毎に処理をする
             {
-                   
-                //GameObject.Find("Face").GetComponent<Face>().FaceGauge += 10;   //顔ゲージに数値を加算
+                GameObject.Find("Image").GetComponent<Face>().FaceGauge += 10;   //顔ゲージに数値を加算
                 UPTime = 0.0f;
             }
         }
@@ -48,8 +47,6 @@ public class Kurodenwa : MonoBehaviour {
         {
             Debug.Log("電話だよーでてー！！");
             dennwa = true;
-            //hana.SetTrigger("HanaT");
-
         }
     }
     void OnTriggerExit2D(Collider2D other)
@@ -58,7 +55,6 @@ public class Kurodenwa : MonoBehaviour {
         {
             Debug.Log("電話終わってるじゃねぇか！！");
             dennwa = false;
-            //hana.SetTrigger("HanaBack");
         }
     }
 }

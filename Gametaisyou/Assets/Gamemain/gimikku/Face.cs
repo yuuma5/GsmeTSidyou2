@@ -18,11 +18,11 @@ public class Face : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(FaceGauge < 0)       //顔ゲージの下限設定
+        if(FaceGauge <= 0)       //顔ゲージの下限設定
         {
             FaceGauge = 0;
         }
-        if(FaceGauge > 100)     //顔ゲージの上限値設置
+        if(FaceGauge >= 100)     //顔ゲージの上限値設置
         {
             FaceGauge = 100;
         }
@@ -49,6 +49,7 @@ public class Face : MonoBehaviour {
         }
         if (FaceGauge == 100)
         {
+            doragonn.korosudeflg = true;
             this.gameObject.GetComponent<Image>().sprite = BlackFace;
         }                                                                   //↑ここまで
         Debug.Log(FaceGauge);
